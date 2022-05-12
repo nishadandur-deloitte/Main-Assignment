@@ -1,0 +1,33 @@
+CREATE DATABASE Cricket;
+
+CREATE TABLE TeamDetails(SlNo INT, TeamName VARCHAR(25), Captain VARCHAR(25),
+						OrderHead VARCHAR(25), HomeGround VARCHAR(40), PRIMARY KEY(SlNO))
+						
+SELECT *FROM TeamDetails;
+SELECT COUNT(SlNo) FROM TeamDetails;
+
+COPY TeamDetails(SlNo, Teamname,Captain, OrderHead, HomeGround)
+FROM 'C:\Temp\team-details.csv' DELIMITER ','
+CSV HEADER;
+
+CREATE TABLE Fixtures(MatchNo INT, HomeTeam VARCHAR(25), AwayTeam VARCHAR(25),
+					 Venue VARCHAR(40), TeamWon VARCHAR(25), TeamLost VARCHAR(25),
+					  PRIMARY KEY(MatchNo))
+					  
+SELECT *FROM Fixtures;		
+
+COPY Fixtures(MatchNo, HomeTeam, AwayTeam, Venue, TeamWon, TeamLost)
+FROM 'C:\Temp\Fixtures.csv' DELIMITER ','
+CSV HEADER;
+
+
+CREATE TABLE Points(TeamName VARCHAR(25), NoOfWins INT, NoOfLosses INT, Point INT, 
+					PRIMARY KEY(TeamName))
+					
+SELECT *FROM Points;	
+
+SELECT COUNT(HomeTeam) FROM Fixtures WHERE Venue='Bangalore' and HomeTeam='RCB';
+
+
+SELECT TeamLost FROM Fixtures WHERE Venue='Kolkata';
+
